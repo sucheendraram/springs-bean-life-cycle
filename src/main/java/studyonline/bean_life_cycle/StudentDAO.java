@@ -37,6 +37,18 @@ public class StudentDAO {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	
+	public void closeConnection() {
+		try {
+			System.out.println("Closing the connection....");
+			this.conn.close();
+			System.out.println("Connection closed");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 
 	public void getAllStudents() {
 		try {
@@ -47,7 +59,8 @@ public class StudentDAO {
 			ResultSet res = statement.executeQuery("select * from student");
 			// process the resultset
 			while (res.next()) {
-				System.out.println(res.getString("id") + " "+res.getString("first_name") + " " + res.getString("last_name"));
+				System.out.println(
+						res.getString("id") + " " + res.getString("first_name") + " " + res.getString("last_name"));
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
